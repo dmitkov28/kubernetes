@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client
+  namespace: projectx
+  labels:
+    role: client
+spec:
+  containers:
+    - name: curl-container
+      image: curlimages/curl:latest
+      command: ["sleep", "infinity"]

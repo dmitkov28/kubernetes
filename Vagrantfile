@@ -18,6 +18,7 @@ Vagrant.configure(2) do |config|
     cp.vm.provision "shell", path: "./setup_scripts/k8s.sh"
     cp.vm.provision "shell", path: "./setup_scripts/cp_setup.sh"
     cp.vm.provision "shell", path: "./setup_scripts/export_token.sh"
+    cp.vm.provision "shell", path: "./setup_scripts/users.sh"
 
   end
 

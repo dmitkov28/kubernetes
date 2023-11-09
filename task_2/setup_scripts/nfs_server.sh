@@ -12,3 +12,5 @@ echo '/nfs_data 192.168.200.0/255.255.255.0(rw,sync,no_subtree_check)' >> /etc/e
 
 echo '* Restart nfs server ...'
 systemctl restart nfs-kernel-server
+
+

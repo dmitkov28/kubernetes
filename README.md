@@ -60,3 +60,35 @@ kubectl apply -f secret.yml
  kubectl apply -f pod.yml
  ```
 </ol>
+
+## Task 2
+<br/>
+
+![Image Alt Text](/task_2/diagram.png)
+
+<br/>
+
+**An nfs server is used for the volumes (See Vagrantfile)*
+
+<br/>
+
+To spin up the cluster & nfs server, run:
+<br/>
+
+
+```
+vagrant up
+```
+<br/>
+
+To apply the manifests, run: 
+<br/>
+```
+kubectl apply -f /vagrant/manifests
+```
+
+Done ✅
+
+
+
+

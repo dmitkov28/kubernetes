@@ -2,6 +2,7 @@
 
 echo '* Create shared directory ...'
 mkdir /nfs_data
+chmod -R 777 /nfs_data
 
 echo '* Install nfs server ...'
 apt update && apt install -y nfs-kernel-server

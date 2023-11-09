@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fe-cm
+data:
+  FACTS_SERVER: be-svc
+  FACTS_PORT: "5000"

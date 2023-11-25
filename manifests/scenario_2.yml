@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: readiness-http
+  name: readiness-http
+spec:
+  initContainers:
+  - name: init-data
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args:
+      - |
+        echo '(Almost) Always Ready to Serve ;)' >  /usr/share/nginx/html/index.html
+        mkdir -p /usr/share/nginx/html/check
+    volumeMounts:
+    - name: data
+      mountPath: /usr/share/nginx/html
+  containers:
+  - name: cont-main
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: data
+      mountPath: /usr/share/nginx/html
+    readinessProbe:
+      httpGet:
+        path: /check/healthy.html
+        port: 80
+      initialDelaySeconds: 25
+      periodSeconds: 5
+  - name: cont-sidecar-postpone
+    image: alpine
+    command: ["/bin/sh", "-c"]
+    args:
+      - while true; do
+          sleep 20; 
+          echo 'WORKING' > /usr/share/nginx/html/check/healthy.html; 
+          sleep 60;
+        done
+    volumeMounts:
+    - name: data
+      mountPath: /usr/share/nginx/html
+  # - name: cont-sidecar-break
+  #   image: alpine
+  #   command: ["/bin/sh", "-c"]
+  #   args:
+  #     - while true; do
+  #         sleep 60; 
+  #         rm /check/healthy.html;
+  #         sleep 20;
+  #       done
+  #   volumeMounts:
+  #   - name: data
+  #     mountPath: /check
+  volumes:
+  - name: data
+    emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: readiness-http
+  labels:
+    app: readiness-http
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    app: readiness-http

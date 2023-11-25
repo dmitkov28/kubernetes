@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: fe-cm
-data:
-  FACTS_SERVER: facts
-  FACTS_PORT: "5000"

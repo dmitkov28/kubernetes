@@ -2,6 +2,7 @@
 
 echo '* Create shared directory ...'
 mkdir /nfs_data
+mkdir -p /nfs_data/{k8spva,k8spvb,k8spvc}
 chmod -R 777 /nfs_data
 
 echo '* Install nfs server ...'

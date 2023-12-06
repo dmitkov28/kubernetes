@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-cm
+data:
+  index.html: |-
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <h1>{{ .Values.pageTitle | default "Default Hello, Kubernetes!" }}</h1>
+      <img src="{{ .Values.imageUrl | default "https://source.unsplash.com/random/300x300" }}" alt="Your Image">
+    </body>
+    </html>

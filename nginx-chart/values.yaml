@@ -1,0 +1,4 @@
+nodePort: 31001
+replicas: 5
+pageTitle: "Hello from my custom title :)"
+imageUrl: "https://miro.medium.com/v2/resize:fit:417/0*4WkH-pktvEttw65u.png"

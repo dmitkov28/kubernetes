@@ -13,7 +13,7 @@ echo "* Create certificates ..."
 mkdir -p /home/ivan/.certs
 openssl genrsa -out /home/ivan/.certs/ivan.key 2048
 openssl req -new -key /home/ivan/.certs/ivan.key -out /home/ivan/.certs/ivan.csr -subj "/CN=ivan"
-openssl x509 -req -in /home/ivan/.certs/ivan.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ivan/.certs/mariana.crt -days 365
+openssl x509 -req -in /home/ivan/.certs/ivan.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ivan/.certs/ivan.crt -days 365
 
 # Mariana
 mkdir -p /home/mariana/.certs
